@@ -1,5 +1,7 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    if (DINO.vy == 0) {
+        DINO.vy = -150
+    }
 })
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     animation.runImageAnimation(
@@ -260,7 +262,162 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
     )
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    animation.runImageAnimation(
+    DINO,
+    [img`
+        ........................
+        ........................
+        ...........cc...........
+        ...........cccc.........
+        .......cc...ccccccc.....
+        .......cccccc555555cc...
+        ........ccb5555555555c..
+        .....cc..b555555555555c.
+        .....cccb555555ff155555c
+        .....ccb55555555ff55d55c
+        ......b5555555555555555c
+        ...c..b555d55555bb13bbc.
+        ...cccd55ddddd55bb3335c.
+        ....cbdddddddddd55b335c.
+        ..cccdddddb55bdddd5555c.
+        ..cccdddddb555bbbbcccc..
+        ...ccddddddb5555cbcdc...
+        ccccbdddddddcb55cbcc....
+        cddddddddd55dbccbbc.....
+        cbdddddddd555dbbbcc.....
+        .ccbdddbbdd555bbcdbcc...
+        ...cccbbbbdd55ccdddbc...
+        ......cccbdddbccccccc...
+        ........cdd555dc........
+        `,img`
+        ........................
+        ........................
+        ...........ccc..........
+        ...........cccc.........
+        .......ccc..ccccccc.....
+        .......cccccc555555cc...
+        ........ccb5555555555c..
+        .....cc..b555555555555c.
+        .....cccb555555ff155555c
+        ......cb55555555ff55d55c
+        ......b5555555555555555c
+        ...cc.b555dd5555bb13bbc.
+        ...cccd55ddddd555b3335c.
+        .....bdddddddddd55b335c.
+        ..cccdddddb55bbddd5555c.
+        ..cccdddddb555bbbbcccc..
+        ...ccddddddb5555cbcdc...
+        ccccbdddddd5cb55cbcc....
+        cddddddddd5555ccbbc.....
+        .cddddddbdd555bbbcc.....
+        ..ccdddbbbdd55cbcdc.....
+        ....ccbbcbddddccdddcc...
+        ......cccdd555dcccccc...
+        ........cccccccc........
+        `,img`
+        ........................
+        ............cc..........
+        ............ccc.........
+        ........ccc.ccccccc.....
+        ........ccccc555555cc...
+        ........ccb5555555555c..
+        .....ccc.b55555ff15555c.
+        .....cccb5555555ff55555c
+        ......cb555555555555d55c
+        ....c.b555555555bb55555c
+        ....ccb555ddd5555b13bbc.
+        ....ccd55ddddd555b3335c.
+        .....cdd5ddddddd55b335c.
+        ...c.bddddb555bbbd555c..
+        ...ccdddddbb55555bccc...
+        ...ccdddddddcc555bcc....
+        ...ccddddddddbcccbcccc..
+        .ccbddddddd55dbbbbc55c..
+        ccddddddddd555dbbcc5c...
+        cddddddbbbdd555bbccc....
+        .ccddddbbbbdd55bcc......
+        ...cccbbbbbdddbcddcc....
+        .....cccccdd555dcccc....
+        ..........cccccc........
+        `,img`
+        ........................
+        ............cc..........
+        ............ccc.........
+        ........ccc.ccccccc.....
+        ........ccccc555555cc...
+        ........ccb5555555555c..
+        .....ccc.b55555ff15555c.
+        .....cccb5555555ff55555c
+        ......cb555555555555d55c
+        ....c.b555555555bb55555c
+        ....ccb555ddd5555b13bbc.
+        ....ccd55ddddd555b3335c.
+        .....cdd5ddddddd55b335c.
+        ...c.bddddb555bbbd555c..
+        ...ccdddddbb55555bccc...
+        ...ccdddddddcc555bcc....
+        .ccccdddddddddcccbcccc..
+        .cdcdddddddd55dbbbc55c..
+        .cdddddddddd555dccc5c...
+        .cbddddbbbbdd5d555cc....
+        ..cbdddbbbbbdd5555......
+        ...cccbbbbbbd5555c......
+        .....cccccccc555c.......
+        .............ccc........
+        `,img`
+        ........................
+        ............cc..........
+        ............ccc.........
+        ........ccc.ccccccc.....
+        ........ccccc555555cc...
+        ........ccb5555555555c..
+        .....ccc.b55555ff15555c.
+        .....cccb5555555ff55555c
+        ......cb555555555555d55c
+        ....c.b555555555bb55555c
+        ....ccb555ddd5555b13bbc.
+        ....ccd55ddddd555b3335c.
+        .....cdd5ddddddd55b335c.
+        ...c.bddddb555bbbd555c..
+        ...ccdddddb555555bccc...
+        ..cccddddddcc5555bcc....
+        .cdccddddddddbcccbcccc..
+        .cddbdddddddddbbbbc55c..
+        .cdddddddddd55dbbbc5c...
+        .cbddddbbbbd55ddbccc....
+        ..cbdddbbbbd555dccc.....
+        ...cccbbbbbbddd555c.....
+        .....ccccccbd55555c.....
+        ...........cc5555c......
+        `,img`
+        ........................
+        ............cc..........
+        ............ccc.........
+        ........cc..ccccccc.....
+        ........ccccc555555cc...
+        ........ccb5555555555c..
+        .....cc..b555555555555c.
+        .....cccb555555ff155555c
+        ......cb55555555ff55d55c
+        ......b5555555555555555c
+        ...cc.b555dd5555bb13bbc.
+        ...cccd55ddddd555b3335c.
+        ....ccdd5ddddddd55b335c.
+        .....bddddb55bdddd5555c.
+        ..cccdddddb55bbbbbcccc..
+        .ccccddddddb5555cbcccc..
+        .cdccdddddddc555cbc55c..
+        .cdddddddddddcccbbc5c...
+        .cbddddddd55dbbbbccc....
+        .ccbdddddd555dbbbcbc....
+        ..cccddbbbd555bbccc.....
+        ....ccbbbbbd555cc.......
+        ......ccccbddddbc.......
+        ..........cd5555dc......
+        `],
+    100,
+    true
+    )
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -420,34 +577,59 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
     DINO.changeScale(-0.4, ScaleAnchor.Middle)
+    if (DINO.tileKindAt(TileDirection.Center, assets.tile`myTile1`)) {
+        if (controller.down.isPressed()) {
+            DINO.ay += 400
+        }
+    }
 })
+let kullU: Sprite = null
+let consumableHuman: Sprite = null
 let DINO: Sprite = null
 tiles.setCurrentTilemap(tilemap`level3`)
+let Earth = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
 DINO = sprites.create(img`
     ........................
-    ............cc..........
-    ............ccc.........
-    ........ccc.ccccccc.....
-    ........ccccc555555cc...
+    ........................
+    ...........cc...........
+    ...........cccc.........
+    .......cc...ccccccc.....
+    .......cccccc555555cc...
     ........ccb5555555555c..
-    .....ccc.b55555ff15555c.
-    .....cccb5555555ff55555c
-    ......cb555555555555d55c
-    ....c.b555555555bb55555c
-    ....ccb555ddd5555b13bbc.
-    ....ccd55ddddd555b3335c.
-    .....cdd5ddddddd55b335c.
-    ...c.bddddb555bbbd555c..
-    ...ccdddddbb55555bccc...
-    ...ccdddddddcc555bcc....
-    ...ccddddddddbcccbcccc..
-    .ccbddddddd55dbbbbc55c..
-    ccddddddddd555dbbcc5c...
-    cddddddbbbdd555bbccc....
-    .ccddddbbbbdd55bcc......
-    ...cccbbbbbdddbcddcc....
-    .....cccccdd555dcccc....
-    ..........cccccc........
+    .....cc..b555555555555c.
+    .....cccb555555ff155555c
+    .....ccb55555555ff55d55c
+    ......b5555555555555555c
+    ...c..b555d55555bb13bbc.
+    ...cccd55ddddd55bb3335c.
+    ....cbdddddddddd55b335c.
+    ..cccdddddb55bdddd5555c.
+    ..cccdddddb555bbbbcccc..
+    ...ccddddddb5555cbcdc...
+    ccccbdddddddcb55cbcc....
+    cddddddddd55dbccbbc.....
+    cbdddddddd555dbbbcc.....
+    .ccbdddbbdd555bbcdbcc...
+    ...cccbbbbdd55ccdddbc...
+    ......cccbdddbccccccc...
+    ........cdd555dc........
     `, SpriteKind.Player)
 let nextLevel = sprites.create(img`
     . . . . . . . . . c c 8 . . . . 
@@ -467,17 +649,97 @@ let nextLevel = sprites.create(img`
     . . . . c c a b b c c c . . . . 
     . . . . . c c c c c c . . . . . 
     `, SpriteKind.Player)
+Earth.setPosition(0, 205)
+DINO.setPosition(0, 200)
+nextLevel.setPosition(0, 200)
+DINO.setStayInScreen(true)
+scene.cameraFollowSprite(DINO)
+controller.moveSprite(DINO, 100, 0)
 animation.runMovementAnimation(
 nextLevel,
 animation.animationPresets(animation.shake),
 2000,
 true
 )
-DINO.setPosition(0, 200)
-nextLevel.setPosition(1500, 60)
-DINO.setStayInScreen(true)
-scene.cameraFollowSprite(DINO)
-controller.moveSprite(DINO, 100, 100)
+DINO.ay = 200
+forever(function () {
+    if (DINO.overlapsWith(nextLevel)) {
+        tiles.setCurrentTilemap(tilemap`level5`)
+        Earth.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . 6 6 6 6 . . . . . . 
+            . . . . 6 6 6 5 5 6 6 6 . . . . 
+            . . . 7 7 7 7 6 6 6 6 6 6 . . . 
+            . . 6 7 7 7 7 8 8 8 1 1 6 6 . . 
+            . . 7 7 7 7 7 8 8 8 1 1 5 6 . . 
+            . 6 7 7 7 7 8 8 8 8 8 5 5 6 6 . 
+            . 6 7 7 7 8 8 8 6 6 6 6 5 6 6 . 
+            . 6 6 7 7 8 8 6 6 6 6 6 6 6 6 . 
+            . 6 8 7 7 8 8 6 6 6 6 6 6 6 6 . 
+            . . 6 8 7 7 8 6 6 6 6 6 8 6 . . 
+            . . 6 8 8 7 8 8 6 6 6 8 6 6 . . 
+            . . . 6 8 8 8 8 8 8 8 8 6 . . . 
+            . . . . 6 6 8 8 8 8 6 6 . . . . 
+            . . . . . . 6 6 6 6 . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+        DINO.setPosition(0, 150)
+        DINO.ay = 50
+        nextLevel.destroy()
+    }
+    if (DINO.overlapsWith(Earth)) {
+        tiles.setCurrentTilemap(tilemap`level7`)
+        DINO.setPosition(0, 150)
+        for (let index = 0; index < 20; index++) {
+            consumableHuman = sprites.create(img`
+                . . . . f f f f f . . . . . . . 
+                . . . f e e e e e f . . . . . . 
+                . . f d d d d e e e f . . . . . 
+                . c d f d d f d e e f f . . . . 
+                . c d f d d f d e e d d f . . . 
+                c d e e d d d d e e b d c . . . 
+                c d d d d c d d e e b d c . f f 
+                c c c c c d d d e e f c . f e f 
+                . f d d d d d e e f f . . f e f 
+                . . f f f f f e e e e f . f e f 
+                . . . . f e e e e e e e f f e f 
+                . . . f e f f e f e e e e f f . 
+                . . . f e f f e f e e e e f . . 
+                . . . f d b f d b f f e f . . . 
+                . . . f d d c d d b b d f . . . 
+                . . . . f f f f f f f f f . . . 
+                `, SpriteKind.Player)
+            tiles.placeOnRandomTile(consumableHuman, assets.tile`myTile17`)
+        }
+        for (let index = 0; index < 10; index++) {
+            kullU = sprites.create(img`
+                . . . . . c c c c c c c . . . . 
+                . . . . c 6 7 7 7 7 7 6 c . . . 
+                . . . c 7 c 6 6 6 6 c 7 6 c . . 
+                . . c 6 7 6 f 6 6 f 6 7 7 c . . 
+                . . c 7 7 7 7 7 7 7 7 7 7 c . . 
+                . . f 7 8 1 f f 1 6 7 7 7 f . . 
+                . . f 6 f 1 f f 1 f 7 7 7 f . . 
+                . . . f f 2 2 2 2 f 7 7 6 f . . 
+                . . c c f 2 2 2 2 7 7 6 f c . . 
+                . c 7 7 7 7 7 7 7 7 c c 7 7 c . 
+                c 7 1 1 1 7 7 7 7 f c 6 7 7 7 c 
+                f 1 1 1 1 1 7 6 f c c 6 6 6 c c 
+                f 1 1 1 1 1 1 6 6 c 6 6 6 c . . 
+                f 6 1 1 1 1 1 6 6 6 6 6 6 c . . 
+                . f 6 1 1 1 1 1 6 6 6 6 c . . . 
+                . . f f c c c c c c c c . . . . 
+                `, SpriteKind.Player)
+            tiles.placeOnRandomTile(kullU, assets.tile`myTile17`)
+        }
+    }
+    if (DINO.tileKindAt(TileDirection.Bottom, assets.tile`myTile9`)) {
+        game.over(false)
+    }
+    if (DINO.tileKindAt(TileDirection.Center, assets.tile`myTile10`)) {
+        game.over(false)
+    }
+})
 forever(function () {
     if (DINO.tileKindAt(TileDirection.Center, sprites.dungeon.hazardLava1)) {
         game.over(false)
@@ -487,5 +749,10 @@ forever(function () {
     }
     if (DINO.tileKindAt(TileDirection.Center, assets.tile`myTile2`)) {
         game.over(false)
+    }
+})
+forever(function () {
+    if (DINO.overlapsWith(Earth)) {
+        DINO.ay = 2000
     }
 })
