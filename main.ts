@@ -586,7 +586,37 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
-	
+    animation.runImageAnimation(
+    DINO,
+    [img`
+        ........................
+        ............cc..........
+        ............ccc.........
+        ........cc..ccccccc.....
+        ........ccccc555555cc...
+        ........ccb5555555555c..
+        .....cc..b555555555555c.
+        .....cccb555555ff155555c
+        ......cb55555555ff55d55c
+        ......b5555555555555555c
+        ...cc.b555dd5555bb13bbc.
+        ...cccd55ddddd555b3335c.
+        ....ccdd5ddddddd55b335c.
+        .....bddddb55bdddd5555c.
+        ..cccdddddb55bbbbbcccc..
+        .ccccddddddb5555cbcccc..
+        .cdccdddddddc555cbc55c..
+        .cdddddddddddcccbbc5c...
+        .cbddddddd55dbbbbccc....
+        .ccbdddddd555dbbbcbc....
+        ..cccddbbbd555bbccc.....
+        ....ccbbbbbd555cc.......
+        ......ccccbddddbc.......
+        ..........cd5555dc......
+        `],
+    100,
+    true
+    )
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     animation.runImageAnimation(
@@ -967,7 +997,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.zapped.play()
-    info.changeScoreBy(1)
+    info.changeScoreBy(5)
     otherSprite.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
@@ -1061,9 +1091,9 @@ let nextLevel = sprites.create(img`
     . . . . c c a b b c c c . . . . 
     . . . . . c c c c c c . . . . . 
     `, SpriteKind.Player)
-Earth.setPosition(0, 200)
+Earth.setPosition(1500, 80)
 DINO.setPosition(0, 200)
-nextLevel.setPosition(0, 200)
+nextLevel.setPosition(1500, 80)
 DINO.setStayInScreen(true)
 scene.cameraFollowSprite(DINO)
 controller.moveSprite(DINO, 100, 0)
