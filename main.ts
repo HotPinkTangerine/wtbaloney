@@ -1,6 +1,36 @@
+namespace SpriteKind {
+    export const shooter = SpriteKind.create()
+}
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.shooter, function (sprite, otherSprite) {
+    music.baDing.play()
+    info.changeScoreBy(10)
+    otherSprite.destroy()
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (DINO.vy == 0) {
         DINO.vy = -150
+    }
+})
+sprites.onCreated(SpriteKind.shooter, function (sprite) {
+    for (let index = 0; index < 10; index++) {
+        projectile2 = sprites.createProjectileFromSprite(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . b . . . . . . . 
+            . . . . . . . b d b . . . . . . 
+            . . . . . . . c d c . . . . . . 
+            . . . . . . . c 5 c . . . . . . 
+            . . . . . . c d 5 d c . . . . . 
+            . . . b c c d 5 5 5 d c c b . . 
+            . . b d d 5 5 5 5 5 5 5 d d b . 
+            . . . b c c d 5 5 5 d c c b . . 
+            . . . . . . c d 5 d c . . . . . 
+            . . . . . . . c 5 c . . . . . . 
+            . . . . . . . c d c . . . . . . 
+            . . . . . . . b d b . . . . . . 
+            . . . . . . . . b . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, sprite, -50, 0)
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
@@ -995,6 +1025,28 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+function chuckSpawner () {
+    list = [0]
+    chuck = sprites.create(img`
+        . . f f f . . . . . . . . . . . 
+        f f f c c . . . . . . . . f f f 
+        f f c c c . c c . . . f c b b c 
+        f f c 3 c c 3 c c f f b b b c . 
+        f f c 3 b c 3 b c f b b c c c . 
+        f c b b b b b b c f b c b c c . 
+        c c 1 b b b 1 b c b b c b b c . 
+        c b b b b b b b b b c c c b c . 
+        c b 1 f f 1 c b b c c c c c . . 
+        c f 1 f f 1 f b b b b f c . . . 
+        f f f f f f f b b b b f c . . . 
+        f f 2 2 2 2 f b b b b f c c . . 
+        . f 2 2 2 2 2 b b b c f . . . . 
+        . . f 2 2 2 b b b c f . . . . . 
+        . . . f f f f f f f . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.shooter)
+    tiles.placeOnRandomTile(chuck, sprites.builtin.crowd0)
+}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.zapped.play()
     info.changeScoreBy(5)
@@ -1008,9 +1060,29 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let kullU: Sprite = null
 let list: number[] = []
 let projectile: Sprite = null
+let projectile2: Sprite = null
 let DINO: Sprite = null
+let chuck: Sprite = null
 let consumableHuman: Sprite = null
 consumableHuman = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
+chuck = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -1121,6 +1193,12 @@ animation.animationPresets(animation.shake),
 2000,
 true
 )
+animation.runMovementAnimation(
+Earth,
+animation.animationPresets(animation.shake),
+2000,
+true
+)
 DINO.ay = 200
 info.setScore(0)
 forever(function () {
@@ -1158,13 +1236,16 @@ forever(function () {
     }
     if (DINO.overlapsWith(Earth)) {
         tiles.setCurrentTilemap(tilemap`level7`)
+        for (let index = 0; index < 50; index++) {
+            chuckSpawner()
+        }
         DINO.setPosition(0, 150)
         Earth.destroy()
         DINO.ay = 200
         for (let index = 0; index < 50; index++) {
             monkeySpawner()
         }
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < 10; index++) {
             enemySpawner()
         }
         battleRoyal = sprites.create(img`
@@ -1196,6 +1277,12 @@ forever(function () {
             `, SpriteKind.Player)
         battleRoyal.setPosition(1500, 80)
     }
+})
+forever(function () {
+    music.playMelody("E A D G B F A C ", 200)
+    music.playMelody("C D E F G A B C5 ", 200)
+    music.playMelody("C5 A B D F E G C ", 200)
+    music.playMelody("B F D C G E C5 A ", 200)
 })
 forever(function () {
     if (DINO.overlapsWith(battleRoyal)) {

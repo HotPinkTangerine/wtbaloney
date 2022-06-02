@@ -255,6 +255,25 @@ namespace myTiles {
 2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
 2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
 `, [myTiles.transparency16,myTiles.tile2,sprites.dungeon.floorDark2,myTiles.tile14,sprites.dungeon.floorLight2,sprites.dungeon.stairEast,sprites.builtin.brick,sprites.dungeon.collectibleInsignia,sprites.dungeon.doorLockedNorth,sprites.dungeon.greenOuterNorth0,sprites.dungeon.purpleOuterNorth1,sprites.dungeon.stairLadder,sprites.dungeon.darkGroundCenter,sprites.dungeon.floorLightMoss,sprites.dungeon.floorDark3,sprites.dungeon.purpleOuterNorth2,sprites.builtin.field1,sprites.skillmap.islandTile1,myTiles.tile15,sprites.builtin.field0,myTiles.tile13,sprites.dungeon.doorClosedNorth,sprites.builtin.crowd0], TileScale.Sixteen);
+            case "level11":
+            case "level11":return tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`, img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, [myTiles.transparency16], TileScale.Sixteen);
         }
         return null;
     })
