@@ -3,6 +3,11 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         DINO.vy = -150
     }
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
+    music.baDing.play()
+    info.changeScoreBy(1)
+    consumableHuman.destroy()
+})
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     DINO,
@@ -780,6 +785,28 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+function monkeySpawner () {
+    list = [0]
+    consumableHuman = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . f f f f f . . . . . . . 
+        . . . f e e e e e f . . . . . . 
+        . . f d d d d e e e f . . . . . 
+        . . f d d d d d e e f f . . . . 
+        . c d d d f f d e e d d f . . . 
+        c d e e d d d d e e b d c . . . 
+        c f f d d c d d e e b d c . . . 
+        f d d f e f f f e e e f . . . . 
+        f d d f e e e f f f f f . . . . 
+        f f f f f e e e e e f f . f f . 
+        . f f f e f f e e e f f . e f . 
+        . f b d f e f f b b f f f e f . 
+        . f d d f e e f d d b f f e f . 
+        . f f f f f f f f f f f f f . . 
+        `, SpriteKind.Food)
+    tiles.placeOnRandomTile(consumableHuman, sprites.builtin.crowd0)
+}
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     DINO,
@@ -944,8 +971,28 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+let list: number[] = []
 let projectile: Sprite = null
 let DINO: Sprite = null
+let consumableHuman: Sprite = null
+consumableHuman = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level3`)
 let Earth = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -1022,6 +1069,7 @@ animation.animationPresets(animation.shake),
 true
 )
 DINO.ay = 200
+info.setScore(0)
 forever(function () {
     if (DINO.tileKindAt(TileDirection.Center, assets.tile`myTile10`) || DINO.tileKindAt(TileDirection.Bottom, assets.tile`myTile9`) || (DINO.tileKindAt(TileDirection.Center, sprites.dungeon.hazardLava1) || (DINO.tileKindAt(TileDirection.Center, assets.tile`myTile`) || DINO.tileKindAt(TileDirection.Center, assets.tile`myTile2`)))) {
         game.over(false)
@@ -1060,6 +1108,9 @@ forever(function () {
         DINO.setPosition(0, 150)
         Earth.destroy()
         DINO.ay = 200
+        for (let index = 0; index < 100; index++) {
+            monkeySpawner()
+        }
     }
 })
 forever(function () {
