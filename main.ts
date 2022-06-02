@@ -1028,6 +1028,9 @@ forever(function () {
     }
 })
 forever(function () {
+	
+})
+forever(function () {
     if (DINO.overlapsWith(nextLevel)) {
         tiles.setCurrentTilemap(tilemap`level5`)
         Earth.setImage(img`
@@ -1058,50 +1061,6 @@ forever(function () {
         Earth.destroy()
         DINO.ay = 200
     }
-})
-forever(function () {
-    music.playTone(349, music.beat(BeatFraction.Whole))
-    music.playTone(349, music.beat(BeatFraction.Whole))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(294, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Whole))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(392, music.beat(BeatFraction.Half))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(294, music.beat(BeatFraction.Half))
-    music.playTone(294, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Whole))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(392, music.beat(BeatFraction.Half))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Whole))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(0, music.beat(BeatFraction.Whole))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(330, music.beat(BeatFraction.Half))
-    music.playTone(392, music.beat(BeatFraction.Half))
-    music.playTone(392, music.beat(BeatFraction.Half))
-    music.playTone(349, music.beat(BeatFraction.Half))
 })
 forever(function () {
     if (DINO.overlapsWith(Earth)) {
