@@ -1,36 +1,11 @@
 namespace SpriteKind {
     export const shooter = SpriteKind.create()
+    export const projectile_2 = SpriteKind.create()
 }
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.shooter, function (sprite, otherSprite) {
-    music.baDing.play()
-    info.changeScoreBy(10)
-    otherSprite.destroy()
-})
+let list: number[] = []
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (DINO.vy == 0) {
         DINO.vy = -150
-    }
-})
-sprites.onCreated(SpriteKind.shooter, function (sprite) {
-    for (let index = 0; index < 10; index++) {
-        projectile2 = sprites.createProjectileFromSprite(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . b d d 5 5 5 5 5 5 5 d d b . 
-            . . . b c c d 5 5 5 d c c b . . 
-            . . . . . . c d 5 d c . . . . . 
-            . . . . . . . c 5 c . . . . . . 
-            . . . . . . . c d c . . . . . . 
-            . . . . . . . b d b . . . . . . 
-            . . . . . . . . b . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, sprite, -50, 0)
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
@@ -436,7 +411,6 @@ controller.down.onEvent(ControllerButtonEvent.Released, function () {
     }
 })
 function enemySpawner () {
-    list = [0]
     kullU = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . f f f f f f . . . . . 
@@ -840,7 +814,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 function monkeySpawner () {
-    list = [0]
     consumableHuman = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -1025,28 +998,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
-function chuckSpawner () {
-    list = [0]
-    chuck = sprites.create(img`
-        . . f f f . . . . . . . . . . . 
-        f f f c c . . . . . . . . f f f 
-        f f c c c . c c . . . f c b b c 
-        f f c 3 c c 3 c c f f b b b c . 
-        f f c 3 b c 3 b c f b b c c c . 
-        f c b b b b b b c f b c b c c . 
-        c c 1 b b b 1 b c b b c b b c . 
-        c b b b b b b b b b c c c b c . 
-        c b 1 f f 1 c b b c c c c c . . 
-        c f 1 f f 1 f b b b b f c . . . 
-        f f f f f f f b b b b f c . . . 
-        f f 2 2 2 2 f b b b b f c c . . 
-        . f 2 2 2 2 2 b b b c f . . . . 
-        . . f 2 2 2 b b b c f . . . . . 
-        . . . f f f f f f f . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.shooter)
-    tiles.placeOnRandomTile(chuck, sprites.builtin.crowd0)
-}
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     music.zapped.play()
     info.changeScoreBy(5)
@@ -1057,49 +1008,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     sprite.destroy()
     game.over(false)
 })
-let kullU: Sprite = null
-let list: number[] = []
-let projectile: Sprite = null
-let projectile2: Sprite = null
-let DINO: Sprite = null
-let chuck: Sprite = null
+let startingLine: Sprite = null
+let stu: number[] = []
 let consumableHuman: Sprite = null
-consumableHuman = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
-chuck = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+let kullU: Sprite = null
+let projectile: Sprite = null
+let DINO: Sprite = null
 let battleRoyal = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -1181,9 +1095,9 @@ let nextLevel = sprites.create(img`
     . . . . c c a b b c c c . . . . 
     . . . . . c c c c c c . . . . . 
     `, SpriteKind.Player)
-Earth.setPosition(0, 200)
+Earth.setPosition(1500, 80)
 DINO.setPosition(0, 200)
-nextLevel.setPosition(0, 200)
+nextLevel.setPosition(1500, 80)
 DINO.setStayInScreen(true)
 scene.cameraFollowSprite(DINO)
 controller.moveSprite(DINO, 100, 0)
@@ -1207,7 +1121,34 @@ forever(function () {
     }
 })
 forever(function () {
-	
+    stu = [
+    0,
+    0,
+    0,
+    0,
+    0
+    ]
+    for (let stu of list) {
+        startingLine = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . 2 2 2 2 2 e . . . 
+            . . . . . . 2 2 2 2 d 2 2 e . . 
+            . . . . . e 2 2 2 2 2 2 2 e . . 
+            . . . . . e 2 2 2 2 2 2 2 e . . 
+            . . . . . e 2 2 2 2 2 e f f c c 
+            . . . . . e e 2 2 e f f f f b c 
+            . . . e e e f e 2 2 e f f f d c 
+            . . e e 2 2 d f e 2 c b 4 4 c c 
+            . . e e 2 2 d f e c 4 1 1 4 c . 
+            . . b 1 1 d e e e c 4 4 4 4 c . 
+            . . . f f f f f d d 4 4 4 b c . 
+            . . . . f f f f d d c c c c . . 
+            . . . . . f f f f f c c c . . . 
+            . . . . e e e f f . . . . . . . 
+            . . . . e e e e f f . . . . . . 
+            `, SpriteKind.Player)
+        startingLine.setPosition(0, 200 * (2 - 150))
+    }
 })
 forever(function () {
     if (DINO.overlapsWith(nextLevel)) {
@@ -1236,9 +1177,6 @@ forever(function () {
     }
     if (DINO.overlapsWith(Earth)) {
         tiles.setCurrentTilemap(tilemap`level7`)
-        for (let index = 0; index < 50; index++) {
-            chuckSpawner()
-        }
         DINO.setPosition(0, 150)
         Earth.destroy()
         DINO.ay = 200
