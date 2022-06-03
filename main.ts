@@ -1928,10 +1928,7 @@ forever(function () {
     }
 })
 forever(function () {
-    music.playMelody("E A D G B F A C ", 200)
-    music.playMelody("C D E F G A B C5 ", 200)
-    music.playMelody("C5 A B D F E G C ", 200)
-    music.playMelody("B F D C G E C5 A ", 200)
+	
 })
 forever(function () {
     if (DINO.overlapsWith(battleRoyal)) {
