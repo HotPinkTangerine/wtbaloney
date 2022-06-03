@@ -94,12 +94,6 @@
         "tilemapTile": true,
         "displayName": "myTile14"
     },
-    "tile7": {
-        "data": "hwQQABAAAAD/////////////////////////////////HxERERHx//8f/x///////x//H///////H/8f////////EfH//////////////////x/////x////8f////H//x8RERER8f/////////x//////////H//////////////////////w==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "myTile5"
-    },
     "tile8": {
         "data": "hwQQABAAAAD/////////////////////////////////HxERERHx//8f/x///////x//H///////H/8f////////EfH//////////////////x/////x////8f//H/H//x/////x8f//H///H//x////8f/x//H///8fEf//8f///////////w==",
         "mimeType": "image/x-mkcd-f4",
@@ -111,6 +105,12 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
         "displayName": "myTile15"
+    },
+    "tile7": {
+        "data": "hwQQABAAAAD/////////////////////////////////HxERERHx//8f/x///////x//H///////H/8f////////EfH//////////////////x//////////8f///////x8RERER8f///////////////////////////////////////////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile5"
     },
     "level2": {
         "id": "level2",
