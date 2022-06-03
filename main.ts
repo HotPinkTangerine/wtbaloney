@@ -2,7 +2,6 @@ namespace SpriteKind {
     export const shooter = SpriteKind.create()
     export const projectile_2 = SpriteKind.create()
 }
-let list: number[] = []
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (DINO.vy == 0) {
         DINO.vy = -150
@@ -1128,7 +1127,7 @@ forever(function () {
     0,
     0
     ]
-    for (let stu of list) {
+    for (let value of stu) {
         startingLine = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . 2 2 2 2 2 e . . . 
@@ -1147,7 +1146,7 @@ forever(function () {
             . . . . e e e f f . . . . . . . 
             . . . . e e e e f f . . . . . . 
             `, SpriteKind.Player)
-        startingLine.setPosition(0, 200 * (2 - 150))
+        startingLine.setPosition(50, 200)
     }
 })
 forever(function () {
