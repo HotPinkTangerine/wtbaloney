@@ -3184,6 +3184,18 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.R
         )
     }
 })
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    music.baDing.play()
+    info.changeScoreBy(1)
+    effects.bubbles.startScreenEffect()
+    pause(2000)
+    effects.bubbles.endScreenEffect()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    game.over(false)
+})
+let mySprite: Sprite = null
 let projectile: Sprite = null
 let DINO2: Sprite = null
 let DINO: Sprite = null
@@ -3395,6 +3407,27 @@ forever(function () {
             .....................5.....................
             `, SpriteKind.Player)
         battleRoyal.setPosition(1500, 80)
+        for (let index = 0; index < 50; index++) {
+            mySprite = sprites.create(img`
+                .............fffff..............
+                ........ccccfcdbbcc........fff..
+                ....fccc111fbdbbccdcc.....fbbf..
+                ...fc13c111cbbbfcddddcc..fbbf...
+                ..fccc31c111bbbcccccbdbffbbcf...
+                .fb11133cc11bbbbcccccccccccf....
+                fbbb11111111bbbbbcccccccbbcf....
+                fbcbbb11ff1bcbbbbbcccccffbbf....
+                ffbbbbbbffbbcbcbbbcccccfcdbbf...
+                ..fbbbbbbbbcbcbbbbcccff.cdbbc...
+                ...ffbbbbbbbcbbbbcfff....ccbbc..
+                .....fffffccccccff.........ccc..
+                ..........fccbbcf...............
+                ..........ccddbbf...............
+                ...........ccddbcf..............
+                .............ccfff..............
+                `, SpriteKind.Enemy)
+            tiles.placeOnRandomTile(mySprite, assets.tile`myTile20`)
+        }
     }
 })
 forever(function () {
