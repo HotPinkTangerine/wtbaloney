@@ -5,6 +5,9 @@ namespace SpriteKind {
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (DINO.vy == 0) {
         DINO.vy = -150
+        if (tiles.tileAtLocationEquals(tiles.getTileLocation(0, 0), assets.tile`myTile13`)) {
+            DINO.vy = 150
+        }
     }
 })
 controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Pressed, function () {
@@ -344,11 +347,6 @@ controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Press
         .................aaaaaaa88....
         `, DINO2, 200, 0)
     music.pewPew.play()
-})
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Food, function (sprite, otherSprite) {
-    music.baDing.play()
-    info.changeScoreBy(1)
-    otherSprite.destroy()
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -1506,27 +1504,6 @@ controller.down.onEvent(ControllerButtonEvent.Released, function () {
         DINO.ay += -400
     }
 })
-function enemySpawner () {
-    kullU = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . f 2 f e e e e f f . . . 
-        . . . f 2 2 2 f e e e e f f . . 
-        . . . f e e e e f f e e e f . . 
-        . . f e 2 2 2 2 e e f f f f . . 
-        . . f 2 e f f f f 2 2 2 e f . . 
-        . . f f f e e e f f f f f f f . 
-        . . f e e 4 4 f b e 4 4 e f f . 
-        . . f f e d d f 1 4 d 4 e e f . 
-        . f d d f d d d d 4 e e e f . . 
-        . f b b f e e e 4 e e f . . . . 
-        . f b b e d d 4 2 2 2 f . . . . 
-        . . f b e d d e 4 4 4 f f . . . 
-        . . . f f e e f f f f f f . . . 
-        . . . . f f f . . . f f . . . . 
-        `, SpriteKind.Enemy)
-    tiles.placeOnRandomTile(kullU, sprites.builtin.crowd0)
-}
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     DINO,
@@ -2116,6 +2093,9 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
 controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pressed, function () {
     if (DINO2.vy == 0) {
         DINO2.vy = -150
+        if (tiles.tileAtLocationEquals(tiles.getTileLocation(0, 0), assets.tile`myTile13`)) {
+            DINO2.vy = 150
+        }
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -2750,27 +2730,6 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
         )
     }
 })
-function monkeySpawner () {
-    consumableHuman = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . f f f f f . . . . . . . 
-        . . . f e e e e e f . . . . . . 
-        . . f d d d d e e e f . . . . . 
-        . . f d d d d d e e f f . . . . 
-        . c d d d f f d e e d d f . . . 
-        c d e e d d d d e e b d c . . . 
-        c f f d d c d d e e b d c . . . 
-        f d d f e f f f e e e f . . . . 
-        f d d f e e e f f f f f . . . . 
-        f f f f f e e e e e f f . f f . 
-        . f f f e f f e e e f f . e f . 
-        . f b d f e f f b b f f f e f . 
-        . f d d f e e f d d b f f e f . 
-        . f f f f f f f f f f f f f . . 
-        `, SpriteKind.Food)
-    tiles.placeOnRandomTile(consumableHuman, sprites.builtin.crowd0)
-}
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     DINO,
@@ -3225,18 +3184,6 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.R
         )
     }
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    music.zapped.play()
-    info.changeScoreBy(5)
-    otherSprite.destroy()
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    music.wawawawaa.play()
-    sprite.destroy()
-    game.over(false)
-})
-let consumableHuman: Sprite = null
-let kullU: Sprite = null
 let projectile: Sprite = null
 let DINO2: Sprite = null
 let DINO: Sprite = null
@@ -3260,12 +3207,13 @@ let battleRoyal = sprites.create(img`
     `, SpriteKind.Player)
 tiles.setCurrentTilemap(tilemap`level3`)
 let deadlyTiles = [
-assets.tile`myTile11`,
+assets.tile`myTile18`,
 assets.tile`myTile2`,
 assets.tile`myTile`,
 sprites.dungeon.hazardLava1,
 assets.tile`myTile14`,
-assets.tile`myTile10`
+assets.tile`myTile10`,
+assets.tile`myTile19`
 ]
 let Earth = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -3355,10 +3303,10 @@ let nextLevel = sprites.create(img`
     . . . . c c a b b c c c . . . . 
     . . . . . c c c c c c . . . . . 
     `, SpriteKind.Player)
-Earth.setPosition(0, 200)
+Earth.setPosition(1500, 80)
 DINO.setPosition(0, 200)
 DINO2.setPosition(10, 150)
-nextLevel.setPosition(0, 200)
+nextLevel.setPosition(1500, 80)
 DINO.setStayInScreen(true)
 controller.player2.moveSprite(DINO2, 100, 0)
 controller.moveSprite(DINO, 100, 0)
@@ -3417,40 +3365,34 @@ forever(function () {
         DINO.setPosition(0, 150)
         DINO2.setPosition(10, 150)
         Earth.destroy()
-        DINO.ay = 200
-        DINO2.ay = 200
-        for (let index = 0; index < 50; index++) {
-            monkeySpawner()
-        }
-        for (let index = 0; index < 10; index++) {
-            enemySpawner()
-        }
+        DINO.ay = -200
+        DINO2.ay = -200
         battleRoyal = sprites.create(img`
-            .....................5.....................
+            .........4444444444444444444444444.........
+            ........555d5555555522255555555d555........
+            ........525d58885d5222225d58885d525........
+            ........555555555555222555555555555........
+            .......5555554d5555555555555d4555555.......
+            .......5555544.5555555555555.4455555.......
+            ......5555544...55555555555...4455555......
+            ......5555544....555555555....4455555......
+            .....5555544.....555555555.....4455555.....
+            .....5555544......5555555......4455555.....
+            .....555544......555555555......445555.....
+            ....5555444.....55555855555.....4445555....
+            ....554444.....5555588855555.....444455....
+            ...55444......575558888855555......44455...
+            ...544.........5555588855555.........445...
+            ..554...........55555855555...........455..
+            ..5..............555555555..............5..
+            .555..............5555555..............555.
+            55855..............52225..............55855
+            .555................525................555.
+            ..5..................5..................5..
             ....................555....................
             ...................55555...................
             ....................555....................
-            ..5..................5..................5..
-            .555................525................555.
-            55855..............52225..............55855
-            .555..............5555555..............555.
-            ..5..............555555555..............5..
-            ..554...........55555855555...........455..
-            ...544.........5555588855555.........445...
-            ...55444......575558888855555......44455...
-            ....554444.....5555588855555.....444455....
-            ....5555444.....55555855555.....4445555....
-            .....555544......555555555......445555.....
-            .....5555544......5555555......4455555.....
-            .....5555544.....555555555.....4455555.....
-            ......5555544....555555555....4455555......
-            ......5555544...55555555555...4455555......
-            .......5555544.5555555555555.4455555.......
-            .......5555554d5555555555555d4555555.......
-            ........555555555555222555555555555........
-            ........525d58885d5222225d58885d525........
-            ........555d5555555522255555555d555........
-            .........4444444444444444444444444.........
+            .....................5.....................
             `, SpriteKind.Player)
         battleRoyal.setPosition(1500, 80)
     }
