@@ -6328,10 +6328,10 @@ let nextLevel = sprites.create(img`
     . . . . . c c c c c c . . . . . 
     `, SpriteKind.Player)
 Earth.setPosition(1500, 80)
-fire.setPosition(0, 200)
+fire.setPosition(1500, 80)
 DINO.setPosition(0, 200)
 DINO2.setPosition(10, 150)
-nextLevel.setPosition(0, 200)
+nextLevel.setPosition(1500, 80)
 DINO.setStayInScreen(true)
 controller.player2.moveSprite(DINO2, 100, 0)
 controller.moveSprite(DINO, 100, 0)
